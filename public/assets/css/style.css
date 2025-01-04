@@ -1,0 +1,77 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 0px;
+  background-color: #292735; /* بني */
+  padding: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  transition: 0.3s
+}
+.sidebar:hover {
+  width: 550px;
+}
+.sidebar h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  display: none
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: white;
+  padding: 12px 18px;
+  margin: 10px 0;
+  background-color: #525293; /* وردي */
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  display: none
+}
+.sidebar:hover a {
+  display: block
+}
+.sidebar:hover h2 {
+  display: block
+}
+.sidebar a:hover {
+  background-color: #9b9adb;
+}
+
+.content {
+  margin-left: 300px; /* تجعل المحتوى يبدأ بعد الـ Sidebar */
+  padding: 20px;
+  background-color: #fff;
+  color: #333;
+  width: 100%;
+}
+
+.content h1 {
+  color: #6e4b3a; /* بني */
+}
+
+.content p {
+  font-size: 18px;
+}
+table{
+  margin: 0px auto;
+}
+a{
+margin-left: 145px;  
+}
+form{
+
+margin-left: 200px; 
+}
