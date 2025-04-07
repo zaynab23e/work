@@ -9,7 +9,7 @@
 <body class="bg-light">
     <div class="container vh-100 d-flex justify-content-center align-items-center">
         <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
-            <h3 class="text-center mb-4">Login</h3>
+            <h3 class="text-center mb-4">Loginn</h3>
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul class="mb-0">
