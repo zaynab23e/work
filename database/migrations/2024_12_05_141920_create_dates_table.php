@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('dates', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employees_id')->nullable();
-            $table->foreign('employees_id')->references('id')->on('employees');
+            $table->foreign('employees_id')->references('id')->on('employees')->onDelete('cascade');
             $table->date('startDate');
             $table->date('endDate');
             $table->timestamps();
