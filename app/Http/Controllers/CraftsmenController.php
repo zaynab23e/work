@@ -30,7 +30,7 @@ class CraftsmenController extends Controller
                     ->orWhereHas('category', function ($q) use ($search) {
                         $q->where('name', 'LIKE', "%{$search}%");
                     });
-                })->orderBy('endDate', 'asc') 
+                })
                 ->get();
                 return view('work.index', compact('craftsmens'));
             
