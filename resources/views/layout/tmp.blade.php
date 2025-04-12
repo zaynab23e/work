@@ -16,6 +16,10 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit">تسجيل الخروج</button>
+        </form>
     </div>
 
     @yield('conntent')

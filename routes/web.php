@@ -27,7 +27,8 @@ Route::post('/login',                [AuthController::class,'loginuser'])->name(
 
 //all about craftsmens//___________________________________________________________________________________________________________
 Route::group(['middleware'=> ['auth:sanctum']], function () {
-Route::get('/craftsmens',                [CraftsmenController::class,'index'])   ->name('index');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/craftsmens',      [CraftsmenController::class,'index'])   ->name('index');
 Route::post('/store',          [CraftsmenController::class,'store'])   ->name('store');
 Route::get('/create',          [CraftsmenController::class,'create'])  ->name('create');
 Route::get('/show/{id}',       [CraftsmenController::class,'show'])    ->name('show-Craftsmen');

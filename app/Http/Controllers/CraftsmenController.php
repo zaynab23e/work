@@ -30,11 +30,11 @@ class CraftsmenController extends Controller
                     ->orWhereHas('category', function ($q) use ($search) {
                         $q->where('name', 'LIKE', "%{$search}%");
                     });
-                })->get();
+                })->orderBy('endDate', 'asc') 
+                ->get();
                 return view('work.index', compact('craftsmens'));
             
-            // ->orderBy('endDate', 'asc') 
-            // ->get();
+            
         
     }
 //_______________________________________________________________________________________________________________
@@ -111,7 +111,7 @@ public function store(storecraftsmen $request)
 //_______________________________________________________________________________________________________________
     public function edit(string $id)
     {
-        $craftsman=Employee::with(['Category','Governorate','date'])->findOrFail($id);
+        $craftsman=Employee::with(['Category','Governorate','dates'])->findOrFail($id);
         $Governorates=Governorate::all();
         $Categories=Category::all();
         return view('work.edit', compact('craftsman','Governorates','Categories'));
@@ -141,9 +141,9 @@ public function update(updateCraftsmen $request, string $id)
     }
 
 // // إضافة شهر إلى startDate وتعيين EndDate
-// $startDate = Carbon::parse($validatedData['startDate']);
-// $endDate = $startDate->addMonth();  // إضافة شهر
-// $validatedData['endDate'] = $endDate->format('Y-m-d');
+$startDate = Carbon::parse($validatedData['startDate']);
+$endDate = $startDate->addMonth();  
+$validatedData['endDate'] = $endDate->format('Y-m-d');
 
     $craftsman->update($validatedData);
 
@@ -168,4 +168,5 @@ public function indexph(string $id){
 }
 
 //_______________________________________________________________________________________________________________
+
 }

@@ -67,7 +67,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-6">
+        <div class="col-md-6">
             <div class="card shadow border-0 text-end" style="background-color: #f7c9c9; border-left: 5px solid #dc3545;">
                 <div class="card-body">
                     <div class="d-flex align-items-center">
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
 
     </div>
 </div>

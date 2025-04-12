@@ -62,6 +62,6 @@ class AuthController extends Controller
         return view('work.login');
         
     }
- 
+
 
 }

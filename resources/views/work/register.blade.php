@@ -25,7 +25,7 @@
                     <label for="email" class="form-label">name</label>
                     <input type="text" class="form-control" id="email" name="name" placeholder="Enter your name" value="{{ old('name') }}" >
                 </div>
-                <div class="mb-3">
+                <div  class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" value="{{ old('email') }}" >
                 </div>
@@ -35,7 +35,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary w-100">register</button>
                 
-            </form>
+            </form> 
         </div>
     </div>
 </body>
