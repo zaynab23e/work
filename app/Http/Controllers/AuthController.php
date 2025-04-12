@@ -58,7 +58,7 @@ class AuthController extends Controller
     
     public function logout()
     {
-        auth()->logout();
+        auth()->guard('web')->logout();
 
         return view('work.login');
         
