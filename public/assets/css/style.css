@@ -9,18 +9,18 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 0px;
-  background-color: #292735; /* بني */
+  width: 0;
+  background-color: #292735;
   padding: 10px;
   color: white;
   display: flex;
   flex-direction: column;
   height: 100%;
-  transition: 0.3s;
+  transition: width 0.3s;
 }
 
 .sidebar:hover {
-  width: 550px;
+  width: 250px; /* عرض أقل من 550px عشان يكون أنسب */
 }
 
 .sidebar h2 {
@@ -43,7 +43,6 @@ body {
 
 /* زر تسجيل الخروج */
 .sidebar .group-btn .logout-button {
-  text-decoration: none;
   color: white;
   padding: 12px 18px;
   margin: 10px 0;
@@ -54,27 +53,29 @@ body {
   border: none;
   cursor: pointer;
   display: none;
+  appearance: none;
 }
 
 /* إظهار العناصر عند التحويم */
+.sidebar:hover h2,
 .sidebar:hover a,
 .sidebar:hover .group-btn .logout-button {
   display: block;
 }
 
-.sidebar:hover h2 {
-  display: block;
-}
-
 /* تأثير التحويم */
 .sidebar a:hover,
-.sidebar .logout-button:hover {
+.sidebar .group-btn .logout-button:hover {
   background-color: #9b9adb;
+}
+
+/* إصلاح الـ margin للـ form */
+.sidebar .group-btn {
+  margin-left: 0;
 }
 
 /* محتوى الصفحة */
 .content {
-  margin-left: 300px;
   padding: 20px;
   background-color: #fff;
   color: #333;
@@ -89,16 +90,7 @@ body {
   font-size: 18px;
 }
 
-/* تنسيق الجدول */
-table {
-  margin: 0px auto;
-}
-
-/* تعديل المسافات */
-a {
-  margin-left: 145px;
-}
-
-form {
-  margin-left: 200px;
+/* إزالة الـ margin العام للـ form والـ a */
+a, form {
+  margin-left: 0;
 }
