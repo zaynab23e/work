@@ -31,7 +31,8 @@
                    width: 100%;
                    border: none;
                    cursor: pointer;
-                   display: none;">
+                   display: none;"
+                   >
             تسجيل الخروج
         </button>
                 </form>

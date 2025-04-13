@@ -53,7 +53,7 @@ body {
   width: 100%;
   border: none;
   cursor: pointer;
-  display: none;
+  /* display: none; */
 }
 
 /* إظهار العناصر عند التحويم */
