@@ -11,7 +11,7 @@
             <i class="fa-solid fa-angles-left"></i>
         </button>
     </a>
-    </div>
+    </div> 
     <form action="{{ route('update', ['id' => $craftsman->id]) }}" method="POST" enctype="multipart/form-data" dir="rtl">
         @csrf  
         @method('PUT') 
