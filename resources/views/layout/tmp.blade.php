@@ -19,7 +19,7 @@
         <form class="group-btn" action="{{ route('logout') }}" method="POST">
             @csrf
             <a> <button type="submit">تسجيل الخروج</button> <a/>
-            </form>
+        </form>
     </div>
 
     @yield('conntent')
