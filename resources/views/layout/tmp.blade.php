@@ -19,8 +19,8 @@
         <form class="group-btn" action="{{ route('logout') }}" method="POST">
             @csrf
            
-                <button type="submit"  >
-             <a style="background-color: #525293; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%">   تسجيل الخروج</a>
+                <button type="submit"  style="background-color: #525293; color: white; border: none; border-radius: 5px; cursor: pointer; width: 100%">
+             <a> تسجيل الخروج</a>
                 </button>
            
             </form>
