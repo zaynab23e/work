@@ -29,7 +29,7 @@ body {
   display: none
 }
 
-.sidebar a {
+.sidebar a,.sidebar .group-btn .btn {
   text-decoration: none;
   color: white;
   padding: 12px 18px;
