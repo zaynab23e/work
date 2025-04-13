@@ -29,24 +29,26 @@ body {
   display: none
 }
 
-.sidebar a,.sidebar .group-btn .btn {
+.sidebar a,
+.sidebar .group-btn .btn {
   text-decoration: none;
   color: white;
   padding: 12px 18px;
   margin: 10px 0;
-  background-color: #525293; /* وردي */
+  background-color: #525293;
   border-radius: 5px;
-  display: block;
   text-align: center;
-  display: none
+  display: none;
 }
-.sidebar:hover a {
+.sidebar:hover a,
+.sidebar:hover .group-btn .btn {
   display: block
 }
 .sidebar:hover h2 {
-  display: block
+  display: block;
 }
-.sidebar a:hover {
+.sidebar a:hover,
+.sidebar .group-btn .btn:hover {
   background-color: #9b9adb;
 }
 
