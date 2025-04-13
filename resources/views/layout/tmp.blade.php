@@ -16,7 +16,10 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
-        <a href="{{ route('logout') }}">تسجيل الخروج</a>
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" style="background: none; border: none; padding: 0; color: blue; text-decoration: underline; cursor: pointer; font: inherit;">تسجيل الخروج</button>
+        </form>
 
 
     
