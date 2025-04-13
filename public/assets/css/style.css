@@ -42,7 +42,7 @@ body {
 }
 
 /* زر تسجيل الخروج */
-.logout-button {
+.sidebar .group-btn .logout-button {
   text-decoration: none;
   color: white;
   padding: 12px 18px;

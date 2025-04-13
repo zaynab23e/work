@@ -21,7 +21,8 @@
             @csrf
             <button type="submit" class="logout-button">تسجيل الخروج</button>
         </form>
-    </div>    
+    </div>
+       
 
     @yield('conntent')
 
