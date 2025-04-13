@@ -139,13 +139,23 @@ public function update(updateCraftsmen $request, string $id)
         $path = $request->file('imageB')->move(public_path('images/employees'), $imageBName);
         $validatedData['imageB'] = 'images/employees/' . $imageBName;
     }
+ // تحديث بيانات الموظف (بدون التاريخ)
+$craftsman->update($validatedData);
 
-// // إضافة شهر إلى startDate وتعيين EndDate
-$startDate = Carbon::parse($validatedData['startDate']);
-$endDate = $startDate->addMonth();  
-$validatedData['endDate'] = $endDate->format('Y-m-d');
+ // تحديث التاريخ إن وجد
+if (isset($validatedData['startDate'])) {
+    $startDate = Carbon::parse($validatedData['startDate']);
+    $endDate = $startDate->copy()->addMonth();
 
-    $craftsman->update($validatedData);
+     // تحديث أول تاريخ مرتبط بالموظف
+    $date = $craftsman->dates()->first();
+    if ($date) {
+        $date->update([
+            'startDate' => $startDate->format('Y-m-d'),
+            'endDate' => $endDate->format('Y-m-d'),
+        ]);
+    }
+}
 
     return redirect()->route('index');
 }
