@@ -16,15 +16,17 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
+        <a href="{{ route('logout') }}">تسجيل الخروج</a>
+
 
     
-        <form class="group-btn" action="{{ route('logout') }}" method="POST">
+        {{-- <form class="group-btn" action="{{ route('logout') }}" method="POST">
             @csrf
           
 
             <button type="submit" class="logout-button">  <a href="{{ route('logout') }}">تسجيل الخروج</a></button>
             
-        </form>
+        </form> --}}
     </div>
 
     @yield('conntent')
