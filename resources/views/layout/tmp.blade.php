@@ -16,6 +16,8 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
+        <a href="{{ route('index_category') }}">تسجيل الخروج</a>
+
     
         <form class="group-btn" action="{{ route('logout') }}" method="POST">
             @csrf
