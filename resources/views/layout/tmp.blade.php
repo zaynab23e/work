@@ -18,8 +18,8 @@
         <a href="{{ route('index_category') }}">جميع الحرف</a>
         <form class="group-btn" action="{{ route('logout') }}" method="POST">
             @csrf
-            <button class="btn" type="submit">تسجيل الخروج</button> 
-        </form>
+            <a> <button type="submit">تسجيل الخروج</button> <a/>
+            </form>
     </div>
 
     @yield('conntent')
