@@ -16,25 +16,39 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
-        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+        <form action="{{ route('logout') }}" method="POST" style="display: block; margin: 10px 0;">
             @csrf
-            <button type="submit" style="background: none; border: none; padding: 0; color: blue; text-decoration: underline; cursor: pointer; font: inherit;">تسجيل الخروج</button>
+            <button type="submit" style="width: 100%; text-decoration: none; color: white; padding: 12px 18px; background-color: #525293; border-radius: 5px; text-align: center; border: none; cursor: pointer; font-family: inherit; font-size: inherit; display: none;">تسجيل الخروج</button>
         </form>
-
-
-    
-        {{-- <form class="group-btn" action="{{ route('logout') }}" method="POST">
-            @csrf
-          
-
-            <button type="submit" class="logout-button">  <a href="{{ route('logout') }}">تسجيل الخروج</a></button>
-            
-        </form> --}}
     </div>
 
     @yield('conntent')
 
     <!-- إضافة جافا سكريبت هنا -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script>
+    // إضافة سكريبت لإظهار زر تسجيل الخروج عند التحويم على القائمة
+    document.addEventListener('DOMContentLoaded', function() {
+        const sidebar = document.getElementById('sidebar');
+        const logoutBtn = sidebar.querySelector('form button');
+        
+        sidebar.addEventListener('mouseenter', function() {
+            logoutBtn.style.display = 'block';
+        });
+        
+        sidebar.addEventListener('mouseleave', function() {
+            logoutBtn.style.display = 'none';
+        });
+        
+        // إضافة تأثير التحويم على زر تسجيل الخروج
+        logoutBtn.addEventListener('mouseenter', function() {
+            this.style.backgroundColor = '#9b9adb';
+        });
+        
+        logoutBtn.addEventListener('mouseleave', function() {
+            this.style.backgroundColor = '#525293';
+        });
+    });
+    </script>
 </body>
 </html>
