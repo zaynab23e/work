@@ -52,7 +52,9 @@ body {
   display: block;
 }
 .sidebar a:hover,
-.sidebar .group-btn a:hover {
+.sidebar .group-btn a:hover
+.sidebar .group-btn a button:hover
+{
   background-color: #9b9adb;
 }
 
