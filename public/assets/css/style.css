@@ -40,10 +40,10 @@ body {
   text-align: center;
   display: none;
 }
-.sidebar .group-btn a button{
+/* .sidebar .group-btn a button{
   background-color: #525293;
   text-decoration: none;
-}
+} */
 .sidebar:hover a,
 .sidebar:hover .group-btn a {
   display: block
