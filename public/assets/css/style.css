@@ -42,7 +42,7 @@ body {
 }
 
 /* زر تسجيل الخروج */
-.sidebar form .logout-button {
+.logout-button {
   text-decoration: none;
   color: white;
   padding: 12px 18px;
@@ -53,12 +53,12 @@ body {
   width: 100%;
   border: none;
   cursor: pointer;
-  /* display: none; */
+  display: none;
 }
 
 /* إظهار العناصر عند التحويم */
 .sidebar:hover a,
-.sidebar:hover .logout-button {
+.sidebar:hover .group-btn .logout-button {
   display: block;
 }
 
@@ -68,13 +68,13 @@ body {
 
 /* تأثير التحويم */
 .sidebar a:hover,
-.logout-button:hover {
+.sidebar .logout-button:hover {
   background-color: #9b9adb;
 }
 
 /* محتوى الصفحة */
 .content {
-  margin-left: 300px; /* تجعل المحتوى يبدأ بعد الـ Sidebar */
+  margin-left: 300px;
   padding: 20px;
   background-color: #fff;
   color: #333;
@@ -82,7 +82,7 @@ body {
 }
 
 .content h1 {
-  color: #6e4b3a; /* بني */
+  color: #6e4b3a;
 }
 
 .content p {
