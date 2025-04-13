@@ -18,7 +18,7 @@
         <a href="{{ route('index_category') }}">جميع الحرف</a>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
-            <button type="submit">تسجيل الخروج</button>
+        <a> <button type="submit">تسجيل الخروج</button> <a/>
         </form>
     </div>
 
