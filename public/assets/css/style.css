@@ -42,18 +42,15 @@ body {
 }
 
 /* زر تسجيل الخروج */
-.sidebar .group-btn .logout-button {
+.sidebar .group-btn .logout-button a {
+  text-decoration: none;
   color: white;
   padding: 12px 18px;
   margin: 10px 0;
   background-color: #525293;
   border-radius: 5px;
   text-align: center;
-  width: 100%;
-  border: none;
-  cursor: pointer;
-  display: none;
-  appearance: none;
+  display: block;
 }
 
 /* إظهار العناصر عند التحويم */
