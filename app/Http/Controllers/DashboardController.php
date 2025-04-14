@@ -53,4 +53,12 @@ class DashboardController extends Controller
             'day'
         ));
     }
+    public function countAll()
+{
+    return response()->json([
+        'employees' => Employee::count(),
+        'categories' => Category::count(),
+        'governorates' => Governorate::count(),
+    ]);
+}
 }
