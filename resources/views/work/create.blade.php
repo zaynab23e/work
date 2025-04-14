@@ -73,13 +73,19 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-        <!-- حقل تاريخ الاشتراك -->
-        <div class="mb-3">
-            <label for="subscription_date" class="form-label" style="font-size: 25px;">تاريخ الاشتراك</label>
-            <input type="text" class="form-control" id="subscription_date" name="subscription_date" 
-                   placeholder="اختر تاريخ الاشتراك" required>
-        </div>
-    
+            <div class="mb-3">
+                <label for="startDate" class="form-label" style="font-size: 25px;">تاريخ الاشتراك</label>
+                <input type="text" class="form-control" id="startDate" name="startDate" 
+                    placeholder="اختر تاريخ الاشتراك" required>
+            </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+            <script>
+                flatpickr("#startDate", {
+                    dateFormat: "Y-m-d",
+                    minDate: "today"
+                });
+            </script>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary">إرسال</button>
             </div>

@@ -68,22 +68,24 @@ public function store(storecraftsmen $request)
         $validatedData['imageB'] = 'images/employees/' . $imageBName;
     }
 
-    try {
-        // Create the employee record
-        $employee = Employee::create($validatedData);
 
-        
-        $startDate = now(); 
-        $endDate = $startDate->copy()->addMonth(); // One month from now
+    // حفظ بيانات الموظف
+    $employee = Employee::create($validatedData);
 
-        // Save the date record
-        $employee->dates()->create([
-            'startDate' => $startDate->format('Y-m-d'),
-            'endDate' => $endDate->format('Y-m-d'),
-        ]);
+    // حساب تاريخ الانتهاء بناءً على تاريخ الاشتراك
+    $startDate = Carbon::parse($validatedData['startDate']);
+    $endDate = $startDate->copy()->addMonth();
+
+    // حفظ التاريخ
+    $employee->dates()->create([
+        'startDate' => $startDate->format('Y-m-d'),
+        'endDate' => $endDate->format('Y-m-d'),
+    ]);
+
+     return view('work.index'); 
     }
 
-}
+
 
 //_______________________________________________________________________________________________________________
     public function show(string $id)
