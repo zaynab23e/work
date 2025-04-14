@@ -16,8 +16,6 @@ use Auth;
 
 
 
-
-
 class CraftsmenController extends Controller
 {
     public function index(Request $request)
@@ -151,7 +149,7 @@ if (isset($validatedData['startDate'])) {
     $date = $craftsman->dates()->first();
     if ($date) {
         $date->update([
-            'startDate' => $startDate->format('Y-m-d'),
+            'starDate' => $startDate->format('Y-m-d'),
             'endDate' => $endDate->format('Y-m-d'),
         ]);
     }
