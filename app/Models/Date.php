@@ -11,7 +11,7 @@ class Date extends Model
 
     protected $table = 'dates';
 
-protected $fillable=['employees_id','starDate','endtDate'];
+protected $fillable=['employees_id','starDate','endDate'];
 
 
 public function employee(){
