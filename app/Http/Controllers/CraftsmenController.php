@@ -170,7 +170,7 @@ public function subscriptionHistory($id)
     $craftsman = Employee::findOrFail($id);
     $subscriptions = $craftsman->dates ?? [];
 
-    return view('subscription.history', compact('craftsman', 'subscriptions'));
+    return view('index.history', compact('craftsman', 'subscriptions'));
 }
 
 }
