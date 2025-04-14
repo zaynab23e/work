@@ -1,10 +1,8 @@
 @extends('layout.tmp')
 @section('conntent')
 
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset("assets/css/style.css") }}">
-
 
 <div class="container mt-5" style="margin-left: 300px;" dir="rtl">
     <div class="row g-3">
@@ -19,11 +17,9 @@
                         <div>
                             <h5 class="card-title mb-1">عدد الموظفين</h5>
                             <h3 class="mb-0">{{ $allEmployees }}</h3>
-                            
-                    <div  style="font-size: 4rem; color: #e9ecef;">
-                        👥
-                    </div>
-                            
+                            <div style="font-size: 4rem; color: #e9ecef;">
+                                👥
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -39,7 +35,7 @@
                         <div>
                             <h5 class="card-title mb-1">عدد الأقسام (المهن)</h5>
                             <h3 class="mb-0">{{ $allCategories }}</h3>
-                            <div style="font-size: 4rem; color: #e9ecef;" >
+                            <div style="font-size: 4rem; color: #e9ecef;">
                                 💼
                             </div>
                         </div>
@@ -59,7 +55,7 @@
                         <div>
                             <h5 class="card-title mb-1">عدد المحافظات</h5>
                             <h3 class="mb-0">{{ $allGovernorates }}</h3>
-                            <div  style="font-size: 4rem; color: #e9ecef;">
+                            <div style="font-size: 4rem; color: #e9ecef;">
                                 🗺️
                             </div>
                         </div>
@@ -77,7 +73,27 @@
                         <div>
                             <h5 class="card-title mb-1">الحرفين منتهي الاشتراك</h5>
                             <h3 class="mb-0">{{ $expiredEmployeesCount }}</h3>
-                            <div  style="font-size: 4rem; color: #e9ecef;">
+                            <div style="font-size: 4rem; color: #e9ecef;">
+                                📅
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Card: Number of employees whose subscriptions expire in the next week -->
+        <div class="col-md-6">
+            <div class="card shadow border-0 text-end" style="background-color: #e2f0cb; border-left: 5px solid #ffc107;">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="me-3">
+                            <i class="bi bi-calendar-week fs-1 text-warning"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title mb-1">الحرفين الذين تنتهي اشتراكاتهم خلال أسبوع</h5>
+                            <h3 class="mb-0">{{ $expiringInOneWeek }}</h3>
+                            <div style="font-size: 4rem; color: #e9ecef;">
                                 📅
                             </div>
                         </div>
@@ -97,8 +113,8 @@
                         <div>
                             <h5 class="card-title mb-1">متبقي أيام على انتهاء الاشتراك</h5>
                             <h3 class="mb-0">
-                                {{ $day }} حرفي 
-                                <div  style="font-size: 4rem; color: #e9ecef;">
+                                {{ $day }} حرفي
+                                <div style="font-size: 4rem; color: #e9ecef;">
                                     📅
                                 </div>
                             </h3>
