@@ -72,8 +72,8 @@ public function store(storecraftsmen $request)
         // Create the employee record
         $employee = Employee::create($validatedData);
 
-        // Create a new date record for the employee
-        $startDate = now(); // Current date
+        
+        $startDate = now(); 
         $endDate = $startDate->copy()->addMonth(); // One month from now
 
         // Save the date record
@@ -81,23 +81,9 @@ public function store(storecraftsmen $request)
             'startDate' => $startDate->format('Y-m-d'),
             'endDate' => $endDate->format('Y-m-d'),
         ]);
-
-        // Log for debugging purposes
-        \Log::info('Employee and Date Created: ', [
-            'employee_id' => $employee->id,
-            'startDate' => $startDate,
-            'endDate' => $endDate,
-        ]);
-
-        // Redirect with a success message
-        return redirect()->route('index')->with('success', 'تم حفظ البيانات بنجاح!');
-    } catch (\Exception $e) {
-        // If an error occurs during saving
-        return back()->withErrors(['error' => 'حدث خطأ أثناء التخزين: ' . $e->getMessage()]);
     }
+
 }
-
-
 
 //_______________________________________________________________________________________________________________
     public function show(string $id)

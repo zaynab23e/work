@@ -60,10 +60,14 @@
                         <td>{{ $craftsman->NationalNumber }}</td>
                         <td>رقم الهوية</td>
                     </tr>
+                    <tr style="background-color: #e2e2ee87; color: #333; font-weight: bold; border: 2px solid #4f507a;font-size:large" dir="rtl">
+                        <td>{{ $craftsman->dates->startDate }}</td>
+                        <td>رقم الهوية</td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-
+{{-- 
         <!-- Timeline of Dates -->
         <div class="col-12 mt-5">
             <h3>سجل التواريخ:</h3>
@@ -79,7 +83,7 @@
                     </div>
                 @endforeach
             </div>
-        </div>
+        </div> --}}
 
 {{-- 
         <div class="col-12 text-center">
