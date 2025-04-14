@@ -171,6 +171,9 @@ public function subscriptionHistory($id)
     $subscriptions = $craftsman->dates ?? [];
 
     return view('index.history', compact('craftsman', 'subscriptions'));
+
 }
+//_______________________________________________________________________________________________________________
+
 
 }
