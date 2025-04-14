@@ -28,7 +28,7 @@
                     <p>تاريخ النهاية: {{ \Carbon\Carbon::parse($date->endDate)->format('Y-m-d') }}</p>
                 </div>
             </div>
-        @endforeach
+        @endforeach 
     </div>
 
     <div class="text-center mt-4">
