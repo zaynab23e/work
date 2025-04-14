@@ -11,33 +11,46 @@ use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
-    public function yourMethod()
+    public function index()
     {
         // عدد الموظفين الإجمالي
         $allEmployees = Employee::count();
         
-        // عدد الفئات الإجمالي
-        $allCategories = Category::withCount('employees')->count();
+        // عدد الفئات (المهن) الإجمالي
+        $allCategories = Category::count();
         
         // عدد المحافظات الإجمالي
-        $allGovernorates = Governorate::withCount('craftsmen')->count();
+        $allGovernorates = Governorate::count();
         
         // الحصول على أحدث تاريخ انتهاء من جدول dates
         $latestEndDate = Date::max('endDate');
         
         // حساب تاريخ اليوم وتاريخ الأسبوع المقبل
         $today = Carbon::today();
-        $nextWeek = $today->addWeek(); // إضافة أسبوع للتاريخ الحالي
-        
-        // حساب عدد الأشخاص الذين تنتهي اشتراكاتهم خلال أسبوع
+        $nextWeek = $today->copy()->addWeek(); // إضافة أسبوع للتاريخ الحالي
+
+        // عدد الحرفيين الذين تنتهي اشتراكاتهم خلال أسبوع
         $expiringInOneWeek = Employee::whereHas('subscription', function ($query) use ($today, $nextWeek) {
-            $query->whereBetween('endDate', [$today, $nextWeek]); // اشتراكات تنتهي بين اليوم والأسبوع المقبل
+            $query->whereBetween('endDate', [$today, $nextWeek]);
         })->count();
-        
-        // الحصول على جميع الموظفين (إذا كنت بحاجة لذلك في العرض)
-        $all = Employee::all();
-        
-        // إعادة البيانات إلى العرض
-        return view('dashboard', compact('allEmployees', 'allCategories', 'allGovernorates', 'latestEndDate', 'expiringInOneWeek', 'all'));
+
+        // عدد الحرفيين منتهي الاشتراك
+        $expiredEmployeesCount = Employee::whereHas('subscription', function ($query) use ($today) {
+            $query->where('endDate', '<', $today);
+        })->count();
+
+        // عدد الأيام المتبقية على أقرب اشتراك بينتهي
+        $day = Date::where('endDate', '>', $today)->orderBy('endDate')->first();
+        $day = $day ? $today->diffInDays(Carbon::parse($day->endDate)) : 0;
+
+        return view('dashboard', compact(
+            'allEmployees',
+            'allCategories',
+            'allGovernorates',
+            'latestEndDate',
+            'expiringInOneWeek',
+            'expiredEmployeesCount',
+            'day'
+        ));
     }
 }
