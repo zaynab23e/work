@@ -30,12 +30,12 @@ class DashboardController extends Controller
         $nextWeek = $today->copy()->addWeek(); // إضافة أسبوع للتاريخ الحالي
 
         // عدد الحرفيين الذين تنتهي اشتراكاتهم خلال أسبوع
-        $expiringInOneWeek = Employee::whereHas('subscription', function ($query) use ($today, $nextWeek) {
+        $expiringInOneWeek = Employee::whereHas('dates', function ($query) use ($today, $nextWeek) {
             $query->whereBetween('endDate', [$today, $nextWeek]);
         })->count();
 
         // عدد الحرفيين منتهي الاشتراك
-        $expiredEmployeesCount = Employee::whereHas('subscription', function ($query) use ($today) {
+        $expiredEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
             $query->where('endDate', '<', $today);
         })->count();
 
