@@ -85,8 +85,8 @@ public function store(storecraftsmen $request)
         // Log for debugging purposes
         \Log::info('Employee and Date Created: ', [
             'employee_id' => $employee->id,
-            'start_date' => $startDate,
-            'end_date' => $endDate,
+            'startDate' => $startDate,
+            'endDate' => $endDate,
         ]);
 
         // Redirect with a success message

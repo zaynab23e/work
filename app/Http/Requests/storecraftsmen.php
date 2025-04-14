@@ -31,6 +31,8 @@ class storecraftsmen extends FormRequest
             'category_id' => 'required|exists:categories,id',
             'NationalNumber' => ['required', 'digits:14', 'numeric'],
             'city' => 'required|string',
+            'startDate'=> 'required|date_format:Y-m-d',
+            'endDate'=> 'required|date_format:Y-m-d|after_or_equal:startDate',
         ];
     }
 }
