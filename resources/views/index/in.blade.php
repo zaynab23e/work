@@ -113,7 +113,7 @@
                         <div>
                             <h5 class="card-title mb-1">متبقي أيام على انتهاء الاشتراك</h5>
                             <h3 class="mb-0">
-                                {{ $day }} حرفي
+                                {{ $remainingDaysCount }}
                                 <div style="font-size: 4rem; color: #e9ecef;">
                                     📅
                                 </div>
