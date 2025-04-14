@@ -7,8 +7,8 @@ use App\Models\Category;
 use App\Models\Employee;
 use App\Models\Governorate;
 use App\Models\Date;
+use Carbon\Carbon;
 
-use carbon\Carbon; 
 class DashboardController extends Controller
 {
     public function yourMethod()
@@ -40,5 +40,4 @@ class DashboardController extends Controller
         // إعادة البيانات إلى العرض
         return view('dashboard', compact('allEmployees', 'allCategories', 'allGovernorates', 'latestEndDate', 'expiringInOneWeek', 'all'));
     }
-    
 }
