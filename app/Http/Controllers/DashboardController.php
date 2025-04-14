@@ -13,35 +13,33 @@ class DashboardController extends Controller
 {
     public function countAll()
     {
-        // عدد الموظفين الإجمالي
+       
         $allEmployees = Employee::count();
         
-        // عدد الفئات (المهن) الإجمالي
+       
         $allCategories = Category::count();
         
-        // عدد المحافظات الإجمالي
+    
         $allGovernorates = Governorate::count();
         
-        // الحصول على أحدث تاريخ انتهاء من جدول dates
         $latestEndDate = Date::max('endDate');
         
-        // حساب تاريخ اليوم وتاريخ الأسبوع المقبل
+
         $today = Carbon::today();
         $nextWeek = $today->copy()->addWeek(); // إضافة أسبوع للتاريخ الحالي
 
         // عدد الحرفيين الذين تنتهي اشتراكاتهم خلال أسبوع
+        // (بين اليوم واليوم + 7 أيام)
         $expiringInOneWeek = Employee::whereHas('dates', function ($query) use ($today, $nextWeek) {
-            $query->whereBetween('endDate', [$today, $nextWeek]);
+            $query->where('endDate', '>=', $today)
+                ->where('endDate', '<=', $nextWeek);
         })->count();
 
         // عدد الحرفيين منتهي الاشتراك
+        // (تاريخ الانتهاء قبل اليوم)
         $expiredEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
             $query->where('endDate', '<', $today);
         })->count();
-
-        // عدد الأيام المتبقية على أقرب اشتراك بينتهي
-        $day = Date::where('endDate', '>', $today)->orderBy('endDate')->first();
-        $day = $day ? $today->diffInDays(Carbon::parse($day->endDate)) : 0;
 
         return view('index.in', compact(
             'allEmployees',
@@ -49,10 +47,7 @@ class DashboardController extends Controller
             'allGovernorates',
             'latestEndDate',
             'expiringInOneWeek',
-            'expiredEmployeesCount',
-            'day'
+            'expiredEmployeesCount'
         ));
     }
-
-
 }
