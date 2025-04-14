@@ -81,11 +81,11 @@
             </div>
         </div> --}}
 
-
+{{-- 
         <div class="col-12 text-center">
             <a href="{{ route('',['id'=>$craftsman->id]) }}" class="btn btn-dark">
             عرض سجل الاشتراك 
-            </a>
+            </a> --}}
 
         <div class="col-12 text-center">
             <a href="{{ route('index.allph',['id'=>$craftsman->id]) }}" class="btn btn-dark">
