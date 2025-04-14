@@ -19,13 +19,10 @@
 
         <div class="col-12">
             <div class="d-flex align-items-center mb-4" style="border: 1px solid #9c7865; padding: 10px; background-color: #b0b0c087; border-radius: 10px;">
-                <!-- Name and occupation -->
                 <div style="flex: 1; text-align: right;">
                     <h2 style="margin: 0; color: #181717;">{{ $craftsman->name }}</h2>
                     <p style="margin: 0; color: #0f0c0c;">المهنة: {{ $craftsman->Category ? $craftsman->Category->name : 'غير موجود' }}</p>
                 </div>
-        
-                <!-- Image -->
                 <div style="flex-shrink: 0; margin-left: 20px;">
                     @if($craftsman->image)
                         <img src="{{ asset('images/employees/' . basename($craftsman->image)) }}" alt="Image" style="width: 200px; height: 200px; border-radius: 50%; border: 2px solid #ddd;">
@@ -36,7 +33,6 @@
             </div>
         </div>
 
-        <!-- Employee Information Table -->
         <div class="col-12">
             <table class="table table-bordered table-hover" style="border-color: #171615;">
                 <tbody>
@@ -60,14 +56,10 @@
                         <td>{{ $craftsman->NationalNumber }}</td>
                         <td>رقم الهوية</td>
                     </tr>
-                    <tr style="background-color: #e2e2ee87; color: #333; font-weight: bold; border: 2px solid #4f507a;font-size:large" dir="rtl">
-                        <td>{{ $craftsman->dates->startDate }}</td>
-                        <td>رقم الهوية</td>
-                    </tr>
                 </tbody>
             </table>
         </div>
-{{-- 
+
         <!-- Timeline of Dates -->
         <div class="col-12 mt-5">
             <h3>سجل التواريخ:</h3>
@@ -83,20 +75,22 @@
                     </div>
                 @endforeach
             </div>
-        </div> --}}
+        </div>
 
-{{-- 
-        <div class="col-12 text-center">
-            <a href="{{ route('',['id'=>$craftsman->id]) }}" class="btn btn-dark">
-            عرض سجل الاشتراك 
-            </a> --}}
-
-        <div class="col-12 text-center">
+        <!-- Personal Documents Button -->
+        <div class="col-12 text-center mt-4">
             <a href="{{ route('index.allph',['id'=>$craftsman->id]) }}" class="btn btn-dark">
                 عرض الاوراق الشخصيه
             </a>
         </div>
+
+        <!-- Subscription History Button -->
+        <div class="col-12 text-center mt-2 mb-5">
+            <a href="{{ route('subscription.history', ['id' => $craftsman->id]) }}" class="btn btn-dark">
+                عرض سجل الاشتراك
+            </a>
+        </div>
+
     </div>
 </div>
-
 @endsection
