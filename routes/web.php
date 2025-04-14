@@ -56,5 +56,7 @@ Route::put('/update-cr/{id}',          [CategoryController::class, 'update_cr'])
 //dashboard//___________________________________________________________________________________________________________
 Route::get('/in',                [DashboardController::class,'countAll'])->name('in');
 Route::get('/allph/{id}',                [CraftsmenController::class,'indexph'])->name('index.allph');
+Route::get('/subscription-history/{id}', [CraftsmenController::class, 'subscriptionHistory'])->name('subscription.history');
+
 
 //_______________________________________________________________________________________________________________________
