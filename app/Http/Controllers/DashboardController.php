@@ -43,7 +43,7 @@ class DashboardController extends Controller
         $day = Date::where('endDate', '>', $today)->orderBy('endDate')->first();
         $day = $day ? $today->diffInDays(Carbon::parse($day->endDate)) : 0;
 
-        return view('dashboard', compact(
+        return view('index.in', compact(
             'allEmployees',
             'allCategories',
             'allGovernorates',
