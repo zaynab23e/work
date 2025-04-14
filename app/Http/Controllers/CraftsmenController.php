@@ -82,8 +82,8 @@ public function store(storecraftsmen $request)
         'endDate' => $endDate->format('Y-m-d'),
     ]);
 
-    return redirect()->route('index');
-    }
+    return redirect()->route('index'); 
+    } 
 
 
 

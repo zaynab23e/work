@@ -1,7 +1,7 @@
 @extends('layout.tmp')
 
 @section('conntent')
-<div class="container mt-4">
+<div class="container mt-4" dir="rtl">
     <h2 class="mb-4 text-center">سجل الاشتراكات لـ {{ $craftsman->name }}</h2>
 
     @if($subscriptions && count($subscriptions))
