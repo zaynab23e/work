@@ -12,7 +12,7 @@
                     إلى {{ \Carbon\Carbon::parse($sub->endDate)->format('Y-m-d') }}
                 </li>
             @endforeach
-        </ul>
+        </ul>                        
     @else
         <p class="text-muted text-center">لا يوجد سجلات اشتراك.</p>
     @endif

@@ -12,7 +12,7 @@
     <div class="container-fluid">
     <div class="row mt-4">
         <div class="col-12 position-relative">
-            <form method="GET" action="{{ route('index') }}" class="d-flex justify-content-center mb-3">
+            <form method="GET" action="{{ route('index') }}" class="d-flex justify-content-center mb-3" enctype="multipart/form-data">
                 @csrf
                 <div class="input-group">
                     <input type="text" name="search" class="form-control" placeholder="ابحث عن الحرفه او اسم الحرفي" value="{{ request('search') }}">
