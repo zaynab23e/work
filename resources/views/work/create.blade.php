@@ -76,8 +76,8 @@
     
             <!-- حقل الاشتراك -->
             <div class="mb-3">
-                <label for="subscription_date" class="form-label" style="font-size: 25px;">الاشتراك</label>
-                <input type="text" class="form-control" id="subscription_date" name="subscription_date" placeholder="اختر تاريخ الاشتراك" required>
+                <label for="startDate" class="form-label" style="font-size: 25px;">الاشتراك</label>
+                <input type="text" class="form-control" id="startDate" name="startDate" placeholder="اختر تاريخ الاشتراك" required>
             </div>
     
             <div class="text-center">
