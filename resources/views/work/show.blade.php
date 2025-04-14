@@ -64,7 +64,7 @@
             </table>
         </div>
 
-        {{-- <!-- Timeline of Dates -->
+        <!-- Timeline of Dates -->
         <div class="col-12 mt-5">
             <h3>سجل التواريخ:</h3>
             <div class="timeline" style="position: relative; padding: 10px; border-left: 3px solid #343a40;">
@@ -79,7 +79,7 @@
                     </div>
                 @endforeach
             </div>
-        </div> --}}
+        </div>
 
 {{-- 
         <div class="col-12 text-center">
