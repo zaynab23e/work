@@ -108,10 +108,18 @@
             <input type="text" class="form-control" id="NationalNumber" name="NationalNumber" placeholder="أدخل الرقم القومي" value="{{ $craftsman->NationalNumber }}">
         </div>
 
-        <div class="mb-3">
-            <label for="startDate" class="form-label" style="font-size: 25px;">تاريخ البدء</label>
-            <input type="date" class="form-control" id="startDate" name="startDate" value="{{ $craftsman->startDate }}">
-        </div>
+       <!-- حقل تاريخ الاشتراك -->
+       <div class="mb-3">
+        <label for="subscription_date" class="form-label" style="font-size: 25px;">تاريخ الاشتراك</label>
+        @php
+            // في حالة وجود سجل اشتراك، نعرض startDate من سجل الـ dates الأول
+            $subscription = $craftsman->dates->first();
+        @endphp
+        <input type="text" class="form-control" id="subscription_date" name="subscription_date"
+               placeholder="اختر تاريخ الاشتراك" 
+               value="{{ $subscription ? \Carbon\Carbon::parse($subscription->startDate)->format('Y-m-d') : '' }}"
+               required>
+    </div>
 
         <div class="mb-3">
             <label for="city" class="form-label" style="font-size: 25px;">المدينة</label>
