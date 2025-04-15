@@ -8,37 +8,45 @@ use App\Models\Employee;
 use App\Models\Governorate;
 use App\Models\Date;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 
 class DashboardController extends Controller
 {
     public function countAll()
     {
+        // تسجيل التاريخ الحالي للفحص
+        $today = Carbon::today()->format('Y-m-d');
+        $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
+        
+        Log::info("Dashboard Date Check - Today: {$today}, Next Week: {$nextWeek}");
+
+        // الإحصائيات الأساسية
         $allEmployees = Employee::count();
         $allCategories = Category::count();
         $allGovernorates = Governorate::count();
-        $latestEndDate = Date::max('endDate');
         
-        $today = Carbon::today()->format('Y-m-d');
-        $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
-
-        $expiringInOneWeek = Employee::whereHas('dates', function ($query) use ($today, $nextWeek) {
-            $query->whereDate('endDate', '>=', $today)
-                ->whereDate('endDate', '<=', $nextWeek);
-        })->count();
-
+        // الاشتراكات المنتهية
         $expiredEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
-            $query->whereDate('endDate', '<', $today);
+            $query->where('endDate', '<', $today);
         })->count();
 
-        $activeEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
-            $query->whereDate('endDate', '>=', $today);
+        // الاشتراكات التي ستنتهي خلال أسبوع
+        $expiringInOneWeek = Employee::whereHas('dates', function ($query) use ($today, $nextWeek) {
+            $query->where('endDate', '>=', $today)
+                  ->where('endDate', '<=', $nextWeek);
         })->count();
+
+        // الموظفون النشطون
+        $activeEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
+            $query->where('endDate', '>=', $today);
+        })->count();
+
+        Log::info("Dashboard Stats - Expired: {$expiredEmployeesCount}, Expiring Soon: {$expiringInOneWeek}");
 
         return view('index.in', compact(
             'allEmployees',
             'allCategories',
             'allGovernorates',
-            'latestEndDate',
             'expiringInOneWeek',
             'expiredEmployeesCount',
             'activeEmployeesCount'
@@ -53,7 +61,7 @@ class DashboardController extends Controller
             $query->orderBy('endDate', 'desc');
         }])
         ->whereHas('dates', function($query) use ($today) {
-            $query->whereDate('endDate', '<', $today);
+            $query->where('endDate', '<', $today);
         })->get();
     
         // إحصائيات إضافية
@@ -62,12 +70,12 @@ class DashboardController extends Controller
             'allGovernorates' => Governorate::count(),
             'allCategories' => Category::count(),
             'activeEmployeesCount' => Employee::whereHas('dates', function($query) use ($today) {
-                $query->whereDate('endDate', '>=', $today);
+                $query->where('endDate', '>=', $today);
             })->count(),
             'expiringInOneWeek' => Employee::whereHas('dates', function($query) use ($today) {
                 $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
-                $query->whereDate('endDate', '>=', $today)
-                    ->whereDate('endDate', '<=', $nextWeek);
+                $query->where('endDate', '>=', $today)
+                    ->where('endDate', '<=', $nextWeek);
             })->count()
         ];
     
@@ -76,6 +84,4 @@ class DashboardController extends Controller
             'today' => $today
         ], $stats));
     }
-    
-
 }
