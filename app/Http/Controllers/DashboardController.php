@@ -45,28 +45,6 @@ class DashboardController extends Controller
         ));
     }
 
-    // public function expiredEmployees()
-    // {
-    //     $today = Carbon::today()->format('Y-m-d');
-        
-    //     // Debug query
-    //     $debugDates = Date::whereDate('endDate', '<', $today)->get();
-    //     \Log::debug('Expired Dates:', $debugDates->toArray());
-
-    //     $expiredEmployees = Employee::with(['dates' => function($query) {
-    //         $query->orderBy('endDate', 'desc');
-    //     }])
-    //     ->whereHas('dates', function($query) use ($today) {
-    //         $query->whereDate('endDate', '<', $today);
-    //     })->get();
-
-    //     return view('employees.expired', [
-    //         'expiredEmployees' => $expiredEmployees,
-    //         'today' => $today,
-    //         'debugDates' => $debugDates
-    //     ]);
-    // }
-
     public function expiredEmployees()
     {
         $today = Carbon::today()->format('Y-m-d');
@@ -89,7 +67,7 @@ class DashboardController extends Controller
             'expiringInOneWeek' => Employee::whereHas('dates', function($query) use ($today) {
                 $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
                 $query->whereDate('endDate', '>=', $today)
-                      ->whereDate('endDate', '<=', $nextWeek);
+                    ->whereDate('endDate', '<=', $nextWeek);
             })->count()
         ];
     
@@ -98,4 +76,6 @@ class DashboardController extends Controller
             'today' => $today
         ], $stats));
     }
+    
+
 }
