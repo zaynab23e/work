@@ -164,14 +164,21 @@ public function indexph(string $id){
 }
 
 //_______________________________________________________________________________________________________________
-
 public function subscriptionHistory($id)
 {
     $craftsman = Employee::findOrFail($id);
+    $today = \Carbon\Carbon::today()->format('Y-m-d');
+
+    // جلب كل التواريخ
     $subscriptions = $craftsman->dates ?? [];
 
-    return view('index.history', compact('craftsman', 'subscriptions'));
+    // جلب الاشتراك الحالي (اللي endDate أكبر من أو يساوي اليوم)
+    $currentSubscription = $craftsman->dates()
+        ->where('endDate', '>=', $today)
+        ->orderBy('endDate', 'asc') // عشان تجيب أقرب اشتراك حالي
+        ->first();
 
+    return view('index.history', compact('craftsman', 'subscriptions', 'currentSubscription'));
 }
 //_______________________________________________________________________________________________________________
 
