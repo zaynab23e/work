@@ -13,36 +13,25 @@ class DashboardController extends Controller
 {
     public function countAll()
     {
-        // عدد الموظفين الإجمالي
         $allEmployees = Employee::count();
-        
-        // عدد الفئات (المهن) الإجمالي
         $allCategories = Category::count();
-        
-        // عدد المحافظات الإجمالي
         $allGovernorates = Governorate::count();
-        
-        // الحصول على أحدث تاريخ انتهاء من جدول dates
         $latestEndDate = Date::max('endDate');
         
-        // حساب تاريخ اليوم وتاريخ الأسبوع المقبل
         $today = Carbon::today()->format('Y-m-d');
         $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
 
-        // عدد الحرفيين الذين تنتهي اشتراكاتهم خلال أسبوع (بين اليوم واليوم + 7 أيام)
         $expiringInOneWeek = Employee::whereHas('dates', function ($query) use ($today, $nextWeek) {
-            $query->where('endDate', '>=', $today)
-                  ->where('endDate', '<=', $nextWeek);
+            $query->whereDate('endDate', '>=', $today)
+                ->whereDate('endDate', '<=', $nextWeek);
         })->count();
 
-        // عدد الحرفيين منتهي الاشتراك (تاريخ الانتهاء قبل اليوم)
         $expiredEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
-            $query->where('endDate', '<', $today);
+            $query->whereDate('endDate', '<', $today);
         })->count();
 
-        // عدد الحرفيين الذين اشتراكاتهم سارية (تاريخ الانتهاء بعد اليوم)
         $activeEmployeesCount = Employee::whereHas('dates', function ($query) use ($today) {
-            $query->where('endDate', '>=', $today);
+            $query->whereDate('endDate', '>=', $today);
         })->count();
 
         return view('index.in', compact(
@@ -54,5 +43,46 @@ class DashboardController extends Controller
             'expiredEmployeesCount',
             'activeEmployeesCount'
         ));
+    }
+
+    public function expiredEmployees()
+    {
+        $today = Carbon::today()->format('Y-m-d');
+        
+        // Debug query
+        $debugDates = Date::whereDate('endDate', '<', $today)->get();
+        \Log::debug('Expired Dates:', $debugDates->toArray());
+
+        $expiredEmployees = Employee::with(['dates' => function($query) {
+            $query->orderBy('endDate', 'desc');
+        }])
+        ->whereHas('dates', function($query) use ($today) {
+            $query->whereDate('endDate', '<', $today);
+        })->get();
+
+        return view('employees.expired', [
+            'expiredEmployees' => $expiredEmployees,
+            'today' => $today,
+            'debugDates' => $debugDates
+        ]);
+    }
+
+    public function expiringEmployees()
+    {
+        $today = Carbon::today()->format('Y-m-d');
+        $nextWeek = Carbon::today()->addWeek()->format('Y-m-d');
+        
+        $expiringEmployees = Employee::with(['dates' => function($query) {
+            $query->orderBy('endDate', 'asc');
+        }])
+        ->whereHas('dates', function($query) use ($today, $nextWeek) {
+            $query->whereDate('endDate', '>=', $today)
+                ->whereDate('endDate', '<=', $nextWeek);
+        })->get();
+
+        return view('employees.expiring', [
+            'expiringEmployees' => $expiringEmployees,
+            'today' => $today
+        ]);
     }
 }

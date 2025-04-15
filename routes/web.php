@@ -58,9 +58,9 @@ Route::get('/in',                [DashboardController::class,'countAll'])->name(
 Route::get('/allph/{id}',                [CraftsmenController::class,'indexph'])->name('index.allph');
 Route::get('/subscription-history/{id}', [CraftsmenController::class, 'subscriptionHistory'])->name('subscription.history');
 Route::get('/dashboard/countAll', [DashboardController::class, 'countAll']);  
-Route::get('/employees/expired', DashboardController::class)->name('employees.expired');
-Route::get('/employees/expiring', DashboardController::class)->name('employees.expiring');
 
+Route::get('/employees/expired', [DashboardController::class, 'expiredEmployees'])->name('employees.expired');
+Route::get('/employees/expiring', [DashboardController::class, 'expiringEmployees'])->name('employees.expiring');
 
 
 //_______________________________________________________________________________________________________________________
