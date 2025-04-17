@@ -8,11 +8,11 @@
             <thead>
                 <tr> 
                     <th>التحكم</th>
-                    <th>المدينه</th>
-                    <th>المحافظه</th>
-                    <th>الخدمه المطلوبه</th>
                     <th>المبلغ المدفوع</th>
                     <th>المبلغ المتبقي</th>
+                    <th>الخدمه المطلوبه</th>
+                    <th>المدينه</th>
+                    <th>المحافظه</th>
                     <th>رقم الهاتف</th>
                     <th>الاسم</th>
                 </tr>
@@ -30,11 +30,11 @@
                             </form>
                         </td>
 
-                        <td>{{ $customer->city }}</td>
-                        <td>{{ $customer->governorate }}</td>
-                        <td>{{ $customer->service }}</td>
                         <td>{{ $customer->paid_amount }}</td>
                         <td>{{ $customer->remaining_amount }}</td>
+                        <td>{{ $customer->service }}</td>
+                        <td>{{ $customer->city }}</td>
+                        <td>{{ $customer->governorate }}</td>
                         <td>{{ $customer->phone }}</td>
                         <td>{{ $customer->name }}</td>
                     
