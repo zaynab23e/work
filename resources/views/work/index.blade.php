@@ -55,9 +55,13 @@
                                             <a href="{{ route('show-Craftsmen', [$craftsmen->id]) }}">
                                                 <button class="btn btn-secondary btn-sm">عرض</button>
                                             </a>
+                                            <br>
+                                            <br>
                                             <a href="{{ route('edit', [$craftsmen->id]) }}">
                                                 <button class="btn btn-success btn-sm">تعديل</button>
                                             </a>
+                                            <br>
+                                            <br>
                                             <form action="{{ route('destroy', [$craftsmen->id]) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
