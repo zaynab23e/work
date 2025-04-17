@@ -1,13 +1,6 @@
 @extends('layout.tmp')
 @section('conntent')
 
-    @if(session('success'))
-        <p style="color: green; font-weight: bold; text-align: center;">{{ session('success') }}</p>
-    @endif
-
-    @if(session('error'))
-        <p style="color: red; font-weight: bold; text-align: center;">{{ session('error') }}</p>
-    @endif
 
     <div class="container">
     
@@ -146,5 +139,15 @@
             background-color: #0056b3;
         }
     </style>
+
+{{-- 
+@if(session('success'))
+<p style="color: green; font-weight: bold; text-align: center;">{{ session('success') }}</p>
+@endif
+
+@if(session('error'))
+<p style="color: red; font-weight: bold; text-align: center;">{{ session('error') }}</p>
+@endif --}}
+
 
 @endsection
