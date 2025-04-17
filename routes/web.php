@@ -5,6 +5,7 @@ use App\Http\Controllers\CraftsmenController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,5 +63,13 @@ Route::get('/dashboard/countAll', [DashboardController::class, 'countAll']);
 Route::get('/employees/expired', [DashboardController::class, 'expiredEmployees'])->name('employees.expired');
 Route::get('/expired-employees', [DashboardController::class, 'expiredEmployees'])->name('expired.employees');
 
+//Customer//___________________________________________________________________________________________________________
 
+Route::get('customers', [CustomerController::class, 'index'])->name('customers.index');
+Route::get('customers/create', [CustomerController::class, 'create'])->name('customers.create');
+Route::post('customers', [CustomerController::class, 'store'])->name('customers.store');
+Route::get('customers/{id}', [CustomerController::class, 'show'])->name('customers.show');
+Route::get('customers/{id}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+Route::put('customers/{id}', [CustomerController::class, 'update'])->name('customers.update');
+Route::delete('customers/{id}', [CustomerController::class, 'destroy'])->name('customers.destroy');
 //_______________________________________________________________________________________________________________________

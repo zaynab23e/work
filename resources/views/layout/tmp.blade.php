@@ -16,6 +16,7 @@
         <a href="{{ route('in') }}">الرئيسية</a>
         <a href="{{ route('index') }}">اصحاب الحرف</a>
         <a href="{{ route('index_category') }}">جميع الحرف</a>
+        <a href="{{ route('customers.index') }}">العملاء</a> 
         <form action="{{ route('logout') }}" method="POST" style="display: block; margin: 10px 0;">
             @csrf
             <button type="submit" style="width: 100%; text-decoration: none; color: white; padding: 12px 18px; background-color: #525293; border-radius: 5px; text-align: center; border: none; cursor: pointer; font-family: inherit; font-size: inherit; display: none;">تسجيل الخروج</button>
