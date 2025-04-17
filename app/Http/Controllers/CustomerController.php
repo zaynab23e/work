@@ -10,14 +10,18 @@ class CustomerController extends Controller
     public function index(Request $request)
     {
         $search = $request->query('search');
-    
+        
         $customers = Customer::when($search, function ($query, $search) {
             $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('city', 'LIKE', "%{$search}%")
+                ->orWhere('governorate', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%")
+                ->orWhere('service', 'LIKE', "%{$search}%")
                 ->orWhereHas('category', function ($q) use ($search) {
                 $q->where('name', 'LIKE', "%{$search}%");
                 });
         })->get();
-    
+        
         return view('customers.index', compact('customers'));
     }
     // ______________________________________________________________________________________________________
