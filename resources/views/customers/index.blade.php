@@ -1,7 +1,5 @@
 @extends('layout.tmp')
 @section('conntent')
-
-
     <div class="container">
     
         <h1 class="page-title">Customers List</h1>
