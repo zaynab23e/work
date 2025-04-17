@@ -51,17 +51,15 @@
                                     <td>{{ $craftsmen['phone'] }}</td>
                                     {{-- <td>{{ $craftsmen['EndDate'] }}</td> --}}
                                     <td class="actions">
-                                        <div class="btn-group" role="group">
+                                        <div class="btn-group d-flex justify-content-center" role="group" style="gap: 15px;">
                                             <a href="{{ route('show-Craftsmen', [$craftsmen->id]) }}">
                                                 <button class="btn btn-secondary btn-sm">عرض</button>
                                             </a>
-                                            <br>
-                                            <br>
+                                        
                                             <a href="{{ route('edit', [$craftsmen->id]) }}">
                                                 <button class="btn btn-success btn-sm">تعديل</button>
                                             </a>
-                                            <br>
-                                            <br>
+                                            
                                             <form action="{{ route('destroy', [$craftsmen->id]) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
