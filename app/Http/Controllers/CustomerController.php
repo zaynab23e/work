@@ -7,23 +7,19 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index( request $request)
+    public function index(Request $request)
     {
-    
         $search = $request->query('search');
-        
-        $craftsmens = Customer::where('name')
-            ->when($search, function ($query, $search) {
-                $query->where('name', 'LIKE', "%{$search}%")
-                    ->orWhereHas('category', function ($q) use ($search) {
-                        $q->where('name', 'LIKE', "%{$search}%");
-                    });
-                })
-                ->get();
-        $customers = Customer::all();
+    
+        $customers = Customer::when($search, function ($query, $search) {
+            $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhereHas('category', function ($q) use ($search) {
+                $q->where('name', 'LIKE', "%{$search}%");
+                });
+        })->get();
+    
         return view('customers.index', compact('customers'));
     }
-
     // ______________________________________________________________________________________________________
     public function create()
     {
