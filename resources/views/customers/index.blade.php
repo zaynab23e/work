@@ -7,6 +7,7 @@
         <table class="customers-table">
             <thead>
                 <tr> 
+                    <th>التحكم</th>
                     <th>الاسم</th>
                     <th>المدينه</th>
                     <th>المحافظه</th>
@@ -14,19 +15,11 @@
                     <th>الخدمه المطلوبه</th>
                     <th>المبلغ المدفوع</th>
                     <th>المبلغ المتبقي</th>
-                    <th>التحكم</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($customers as $customer)
                     <tr>
-                        <td>{{ $customer->name }}</td>
-                        <td>{{ $customer->city }}</td>
-                        <td>{{ $customer->governorate }}</td>
-                        <td>{{ $customer->phone }}</td>
-                        <td>{{ $customer->service }}</td>
-                        <td>{{ $customer->paid_amount }}</td>
-                        <td>{{ $customer->remaining_amount }}</td>
                         <td class="actions">
                             <a href="{{ route('customers.show', $customer->id) }}" class="btn view-btn">View</a> |
                             <a href="{{ route('customers.edit', $customer->id) }}" class="btn edit-btn">Edit</a> |
@@ -36,12 +29,21 @@
                                 <button type="submit" class="btn delete-btn">Delete</button>
                             </form>
                         </td>
+
+                        <td>{{ $customer->name }}</td>
+                        <td>{{ $customer->city }}</td>
+                        <td>{{ $customer->governorate }}</td>
+                        <td>{{ $customer->phone }}</td>
+                        <td>{{ $customer->service }}</td>
+                        <td>{{ $customer->paid_amount }}</td>
+                        <td>{{ $customer->remaining_amount }}</td>
+                    
                     </tr>
                 @endforeach
             </tbody>
         </table>
 
-        <a href="{{ route('customers.create') }}" class="btn add-btn">Add New Customer</a>
+        <a href="{{ route('customers.create') }}" class="btn add-btn">اضافه عميل</a>
     </div>
 
     <style>
