@@ -7,23 +7,13 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        $search = $request->query('search');
         
-        $customers = Customer::when($search, function ($query, $search) {
-            $query->where('name', 'LIKE', "%{$search}%")
-                ->orWhere('city', 'LIKE', "%{$search}%")
-                ->orWhere('governorate', 'LIKE', "%{$search}%")
-                ->orWhere('phone', 'LIKE', "%{$search}%")
-                ->orWhere('service', 'LIKE', "%{$search}%")
-                ->orWhereHas('category', function ($q) use ($search) {
-                $q->where('name', 'LIKE', "%{$search}%");
-                });
-        })->get();
-        
+        $customers = Customer::all();
         return view('customers.index', compact('customers'));
     }
+
     // ______________________________________________________________________________________________________
     public function create()
     {
@@ -48,7 +38,7 @@ class CustomerController extends Controller
         Customer::create($validatedData);
 
         
-        return redirect()->route('customers.index')->with('success', 'Customer added successfully');
+        return redirect()->route('customers.index');
     }
 //____________________________________________________________________________________________________
     public function show($id)
@@ -97,7 +87,7 @@ class CustomerController extends Controller
 
         $customer->update($validatedData);
 
-        return redirect()->route('customers.index')->with('success', 'Customer updated successfully');
+        return redirect()->route('customers.index');
     }
 //_________________________________________________________________________________________________________________________
     public function destroy($id)
@@ -110,7 +100,7 @@ class CustomerController extends Controller
 
         $customer->delete();
 
-        return redirect()->route('customers.index')->with('success', 'Customer deleted successfully');
+        return redirect()->route('customers.index');
     }
     //_________________________________________________________________________________________________________________________
 }
