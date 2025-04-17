@@ -51,6 +51,21 @@ class CustomerController extends Controller
         return view('customers.show', compact('customer'));
     }
 
+
+
+    public function edit($id)
+    {
+        $customer = Customer::find($id);
+
+        if (!$customer) {
+            return redirect()->route('customers.index')->with('error', 'Customer not found');
+        }
+
+        return view('customers.edit', compact('customer'));  // عرض صفحة التعديل
+    }
+
+
+
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
