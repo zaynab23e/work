@@ -9,7 +9,7 @@
         <p style="color: red; font-weight: bold; text-align: center;">{{ session('error') }}</p>
     @endif
 
-    <div class="container">
+    <div class="container-fauild">
     
         <h1 class="page-title">Customers List</h1>
 
