@@ -12,7 +12,7 @@ class CustomerController extends Controller
     
         $search = $request->query('search');
         
-        $craftsmens = Customer::with('category', 'governorate')
+        $craftsmens = Customer::where('name')
             ->when($search, function ($query, $search) {
                 $query->where('name', 'LIKE', "%{$search}%")
                     ->orWhereHas('category', function ($q) use ($search) {
