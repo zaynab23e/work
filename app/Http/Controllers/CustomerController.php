@@ -7,22 +7,33 @@ use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 {
-    public function index()
+    public function index( request $request)
     {
+    
+        $search = $request->query('search');
+        
+        $craftsmens = Customer::with('category', 'governorate')
+            ->when($search, function ($query, $search) {
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhereHas('category', function ($q) use ($search) {
+                        $q->where('name', 'LIKE', "%{$search}%");
+                    });
+                })
+                ->get();
         $customers = Customer::all();
         return view('customers.index', compact('customers'));
     }
 
-    // عرض النموذج لإضافة عميل جديد
+    // ______________________________________________________________________________________________________
     public function create()
     {
-        return view('customers.create');  // عرض صفحة create.blade.php
+        return view('customers.create');  
     }
 
-    // تخزين العميل في قاعدة البيانات
+    //____________________________________________________________________________________________________
     public function store(Request $request)
     {
-        // التحقق من صحة البيانات
+        
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -33,13 +44,13 @@ class CustomerController extends Controller
             'remaining_amount' => 'nullable|numeric|min:0',
         ]);
 
-        // إنشاء العميل في قاعدة البيانات
+
         Customer::create($validatedData);
 
-        // بعد الإضافة، العودة إلى صفحة العملاء مع رسالة نجاح
+        
         return redirect()->route('customers.index')->with('success', 'Customer added successfully');
     }
-
+//____________________________________________________________________________________________________
     public function show($id)
     {
         $customer = Customer::find($id);
@@ -51,7 +62,7 @@ class CustomerController extends Controller
         return view('customers.show', compact('customer'));
     }
 
-
+//____________________________________________________________________________________________________
 
     public function edit($id)
     {
@@ -65,7 +76,7 @@ class CustomerController extends Controller
     }
 
 
-
+//____________________________________________________________________________________________________
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -88,7 +99,7 @@ class CustomerController extends Controller
 
         return redirect()->route('customers.index')->with('success', 'Customer updated successfully');
     }
-
+//_________________________________________________________________________________________________________________________
     public function destroy($id)
     {
         $customer = Customer::find($id);
@@ -101,4 +112,5 @@ class CustomerController extends Controller
 
         return redirect()->route('customers.index')->with('success', 'Customer deleted successfully');
     }
+    //_________________________________________________________________________________________________________________________
 }
