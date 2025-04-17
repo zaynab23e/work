@@ -1,8 +1,6 @@
 @extends('layout.tmp')
 @section('conntent')
-<button class="btn btn-primary" type="submit">
-    <i class="fas fa-search"></i> Search
-</button>
+
     @if(session('success'))
         <p style="color: green; font-weight: bold; text-align: center;">{{ session('success') }}</p>
     @endif
@@ -12,6 +10,9 @@
     @endif
 
     <div class="container">
+        <button class="btn btn-primary" type="submit">
+            <i class="fas fa-search"></i> Search
+        </button>
         <h1 class="page-title">Customers List</h1>
 
         <table class="customers-table">
