@@ -15,7 +15,7 @@
             <button class="btn btn-primary" type="submit">
                 <i class="fas fa-search"></i> Search
             </button>
-        </div
+        </div>
         <h1 class="page-title">Customers List</h1>
 
         <table class="customers-table">
