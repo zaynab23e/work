@@ -13,8 +13,16 @@ class CustomerController extends Controller
         return view('customers.index', compact('customers'));
     }
 
+    // عرض النموذج لإضافة عميل جديد
+    public function create()
+    {
+        return view('customers.create');  // عرض صفحة create.blade.php
+    }
+
+    // تخزين العميل في قاعدة البيانات
     public function store(Request $request)
     {
+        // التحقق من صحة البيانات
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'city' => 'required|string|max:255',
@@ -25,8 +33,10 @@ class CustomerController extends Controller
             'remaining_amount' => 'nullable|numeric|min:0',
         ]);
 
+        // إنشاء العميل في قاعدة البيانات
         Customer::create($validatedData);
 
+        // بعد الإضافة، العودة إلى صفحة العملاء مع رسالة نجاح
         return redirect()->route('customers.index')->with('success', 'Customer added successfully');
     }
 
