@@ -10,9 +10,12 @@
     @endif
 
     <div class="container">
-        <button class="btn btn-primary" type="submit">
-            <i class="fas fa-search"></i> Search
-        </button>
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder=" ابحث عن عميل " value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">
+                <i class="fas fa-search"></i> Search
+            </button>
+        </div
         <h1 class="page-title">Customers List</h1>
 
         <table class="customers-table">
