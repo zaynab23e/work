@@ -10,8 +10,8 @@
                     <th>التحكم</th>
                     <th>المبلغ المدفوع</th>
                     <th>المبلغ المتبقي</th>
-                    <th>الخدمه المطلوبه</th>
                     <th>رقم الهاتف</th>
+                    <th>الخدمه المطلوبه</th>
                     <th>المدينه</th>
                     <th>المحافظه</th>
                     <th>الاسم</th>
@@ -32,8 +32,8 @@
 
                         <td>{{ $customer->paid_amount }}</td>
                         <td>{{ $customer->remaining_amount }}</td>
-                        <td>{{ $customer->service }}</td>
                         <td>{{ $customer->phone }}</td>
+                        <td>{{ $customer->service }}</td>
                         <td>{{ $customer->city }}</td>
                         <td>{{ $customer->governorate }}</td>
                         <td>{{ $customer->name }}</td>
