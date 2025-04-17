@@ -1,20 +1,20 @@
 @extends('layout.tmp')
 @section('conntent')
-    <div class="container">
+    <div class="container" dir="rtl">
     
         <h1 class="page-title">Customers List</h1>
 
         <table class="customers-table">
             <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>City</th>
-                    <th>Governorate</th>
-                    <th>Phone</th>
-                    <th>Service</th>
-                    <th>Paid Amount</th>
-                    <th>Remaining Amount</th>
-                    <th>Actions</th>
+                <tr> 
+                    <th>الاسم</th>
+                    <th>المدينه</th>
+                    <th>المحافظه</th>
+                    <th>رقم الهاتف</th>
+                    <th>الخدمه المطلوبه</th>
+                    <th>المبلغ المدفوع</th>
+                    <th>المبلغ المتبقي</th>
+                    <th>التحكم</th>
                 </tr>
             </thead>
             <tbody>
