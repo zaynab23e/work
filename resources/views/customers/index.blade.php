@@ -8,13 +8,13 @@
             <thead>
                 <tr> 
                     <th>التحكم</th>
-                    <th>الاسم</th>
                     <th>المدينه</th>
                     <th>المحافظه</th>
-                    <th>رقم الهاتف</th>
                     <th>الخدمه المطلوبه</th>
                     <th>المبلغ المدفوع</th>
                     <th>المبلغ المتبقي</th>
+                    <th>رقم الهاتف</th>
+                    <th>الاسم</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,13 +30,13 @@
                             </form>
                         </td>
 
-                        <td>{{ $customer->name }}</td>
                         <td>{{ $customer->city }}</td>
                         <td>{{ $customer->governorate }}</td>
-                        <td>{{ $customer->phone }}</td>
                         <td>{{ $customer->service }}</td>
                         <td>{{ $customer->paid_amount }}</td>
                         <td>{{ $customer->remaining_amount }}</td>
+                        <td>{{ $customer->phone }}</td>
+                        <td>{{ $customer->name }}</td>
                     
                     </tr>
                 @endforeach
