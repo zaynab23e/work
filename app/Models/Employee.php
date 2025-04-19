@@ -34,9 +34,9 @@ class Employee extends Model
     }
 
     public function dates()
-    {
-        return $this->hasMany(Date::class, 'employees_id');
-    }
+{
+    return $this->hasMany(Date::class, 'employees_id');
+}
     
 
 

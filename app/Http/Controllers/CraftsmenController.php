@@ -12,7 +12,7 @@ use App\Models\Governorate;
 use App\Models\Category;
 use App\Models\Date;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;         
 use Auth;
 
 
@@ -152,10 +152,8 @@ public function destroy(string $id)
 {
     $craftsman = Employee::findOrFail($id);
     
-    // التحقق من وجود سجلات مرتبطة
-    if (DB::table('dates')->where('employees_id', $id)->exists()) {
-        return redirect()->route('index')->with('error', 'لا يمكن حذف الموظف لوجود سجلات مرتبطة.');
-    }
+    // حذف السجلات المرتبطة يدويًا
+    $craftsman->dates()->delete();
     
     $craftsman->delete();
 
